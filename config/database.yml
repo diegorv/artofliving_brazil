@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+  reconnect: true
+  encoding: utf8
+  username: root
+  password: root99
+  host: 127.0.0.1
+
+development:
+  <<: *default
+  database: artOfLiving_development
+
+test:
+  <<: *default
+  database: artOfLiving_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
+# For production
+#   database: editora_erp_development
+#   password: <%= ENV['FENIX_ERP_DATABASE_PASSWORD'] %>
+#
